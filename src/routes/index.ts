@@ -1,1 +1,1 @@
-export * from './people-post';
+export * from './images-get';

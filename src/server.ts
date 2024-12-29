@@ -4,7 +4,7 @@ import fastifySwagger from '@fastify/swagger';
 import fastifySwaggerUi from '@fastify/swagger-ui';
 import * as qs from 'qs';
 import { Logger } from './hooks';
-import { PEOPLE_POST } from './routes';
+import { IMAGES_GET } from './routes';
 
 export async function startServer() {
   const server = fastify({
@@ -76,7 +76,7 @@ export async function startServer() {
     routePrefix: '/docs',
   });
 
-  server.route(PEOPLE_POST);
+  server.route(IMAGES_GET);
 
   server.route({
     handler: async (request, reply) => {
