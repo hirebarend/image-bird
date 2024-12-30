@@ -26,7 +26,7 @@ Image Bird URL: `https://imagebird.co/images.unsplash.com/photo-1573225935973-40
 ### Orginal Image
 
 - URL: `https://images.unsplash.com/photo-1573225935973-40b81f6e39e6`
-- Size: `1.98 MB`
+- Size: `2.36 MB`
 - Dimensions: `4585 x 3057`
 - Format: `jpeg`
 
@@ -35,7 +35,7 @@ Image Bird URL: `https://imagebird.co/images.unsplash.com/photo-1573225935973-40
 ### Result
 
 - URL: `https://imagebird.co/images.unsplash.com/photo-1573225935973-40b81f6e39e6?format=webp&resize[fit]=inside&resize[height]=800&resize[width]=800`
-- Size: `32.7 KB`
+- Size: `40.1 KB`
 - Dimensions: `800 x 533`
 - Format: `webp`
 
