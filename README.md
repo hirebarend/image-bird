@@ -1,51 +1,75 @@
-# Fastify Boilerplate
+# Image Bird
 
-``` code
-Hey There! 🙌 
-🤾 that ⭐️ button if you like this boilerplate. 
-```
+Empower developers with Image Bird's real-time URL-based API to create a host of transformations
+from a single master image for high-quality, performant visual experiences at scale.
 
-The Fastify boilerplate with all you need to build your SaaS, AI tool, or any other web app and make your first $ online fast.
+## Features
 
-## 🚀 Getting Started
+- Format
+- Resize
+
+## Getting Started
+
+Orginal URL: `https://images.unsplash.com/photo-1573225935973-40b81f6e39e6`
+
+Image Bird URL: `https://imagebird.co/images.unsplash.com/photo-1573225935973-40b81f6e39e6`
+
+**Optional Query Parameters**
+
+- format: `jpeg | jpg | png | webp`
+- resize
+    - resize\[height\]: `Height`
+    - resize\[width\]: `Width`
+
+## Demo
+
+### Orginal Image
+
+- URL: `https://images.unsplash.com/photo-1573225935973-40b81f6e39e6`
+- Size: `1.98 MB`
+- Dimensions: `4585 x 3057`
+- Format: `jpeg`
+
+![](/docs/images/photo-1573225935973-40b81f6e39e6.jpeg)
+
+### Result
+
+- URL: `https://imagebird.co/images.unsplash.com/photo-1573225935973-40b81f6e39e6?format=webp&resize[fit]=inside&resize[height]=800&resize[width]=800`
+- Size: `32.7 KB`
+- Dimensions: `800 x 533`
+- Format: `webp`
+
+![](/docs/images/photo-1573225935973-40b81f6e39e6.webp)
+
+## Installation
+
+### Prerequisites
+
+* Install `kubectl`
+* Install `helm`
+
+### Clone Repository
 
 ```bash
-git clone https://github.com/<USERNAME>/fastify-boilerplate.git
+git clone https://github.com/hirebarend/kubetls.git
 
-cd fastify-boilerplate
-
-npm install
-
-npm run dev
-
-# go to http://localhost:8080
+cd kubetls
 ```
 
-## 🛠️ Project Structure
-
-* `.github`
-    * `workflows`
-        * `main.yaml`
-* `helm-charts`: Helm Chart
-* `src`
-    * `core`: contains the models, IOC container and application logic
-    * `hooks`: contains the custom hooks for Fastify such as the logger hook
-    * `routes`: contains the routes for Fastify
-    * `job.ts`: contains the `job()` function which will be executed once and only restarted upon failure, it's intended purpose is the run backgrounds tasks and/or listen to queues
-    * `main.ts`: primary entry point
-    * `server.ts`: contains the `startServer()` function which configures and starts the Fastify server
-* `Dockerfile`
-
-## Supported Cloud Providers
-
-* [Digital Ocean](https://www.digitalocean.com/products/kubernetes)
-
-## Deploy to Kubernetes
+### Configure `helm-charts/values.yaml`
 
 ```bash
-# Replace values in ./helm-charts/values.yaml
+nano helm-charts/values.yaml
+```
 
-helm install my-fastify-boilerplate ./helm-charts
+* `HOST` 
+* `MONGODB_CONNECTION_STRING`
+* `MONGODB_DATABASE_NAME`
+
+### Install `kubetls` using `helm`
+
+```bash
+helm install kubetls ./helm-charts
 ```
 
 ## 🤝 Contributing
