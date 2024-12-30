@@ -76,5 +76,5 @@ helm install kubetls ./helm-charts
 
 We love our contributors! Here's how you can contribute:
 
-- [Open an issue](https://github.com/hirebarend/fastify-boilerplate/issues) if you believe you've encountered a bug.
-- Make a [pull request](https://github.com/hirebarend/fastify-boilerplate/pull) to add new features/make quality-of-life improvements/fix bugs.
+- [Open an issue](https://github.com/hirebarend/image-bird/issues) if you believe you've encountered a bug.
+- Make a [pull request](https://github.com/hirebarend/image-bird/pull) to add new features/make quality-of-life improvements/fix bugs.
