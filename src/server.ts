@@ -66,7 +66,7 @@ export async function startServer() {
         },
       },
       externalDocs: {
-        url: 'https://github.com/hirebarend/fastify-boilerplate',
+        url: 'https://github.com/hirebarend/image-bird',
         description: 'View Offical Documentation',
       },
     },

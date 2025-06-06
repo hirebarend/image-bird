@@ -7,16 +7,7 @@ sharp.cache(false);
 export const IMAGES_GET: RouteOptions<any, any, any, any> = {
   handler: async (
     request: FastifyRequest<{
-      Params: { fqdn: string; '*': string };
-      Querystring: {
-        format: 'jpeg' | 'jpg' | 'png' | 'webp' | undefined;
-        greyscale: string | undefined;
-        resize: {
-          fit: 'cover' | 'inside';
-          height: string;
-          width: string;
-        };
-      };
+      Params: { fqdn: string; options: string; '*': string };
     }>,
     reply: FastifyReply,
   ) => {
@@ -30,6 +21,18 @@ export const IMAGES_GET: RouteOptions<any, any, any, any> = {
       return;
     }
 
+    const options = request.params.options
+      .split(',')
+      .map((x) => x.split('='))
+      .reduce(
+        (dict, x) => {
+          dict[x[0]] = x[1];
+
+          return dict;
+        },
+        {} as Record<string, any>,
+      );
+
     const response = await axios.get(
       `https://${request.params.fqdn}/${request.params['*']}`,
       {
@@ -39,49 +42,22 @@ export const IMAGES_GET: RouteOptions<any, any, any, any> = {
 
     let x = sharp(response.data);
 
-    if (request.query.resize) {
+    if (options['fit'] || options['height'] || options['width']) {
       x = x.resize({
-        fit: request.query.resize.fit,
-        height: parseInt(request.query.resize.height),
-        width: parseInt(request.query.resize.width),
+        fit: options['fit'] || undefined,
+        height: options['height'] ? parseInt(options['height']) : undefined,
+        width: options['width'] ? parseInt(options['width']) : undefined,
       });
     }
 
-    x = x.toFormat(request.query.format || 'jpg');
+    x = x.toFormat(options['format'] || 'jpg');
 
     const buffer: Buffer = await x.toBuffer();
 
-    const contentType: string = `image/${request.query.format || 'jpg'}`;
+    const contentType: string = `image/${options['format'] || 'jpg'}`;
 
     reply.header('content-type', contentType).status(200).send(buffer);
   },
   method: 'GET',
-  url: '/:fqdn/*',
-  schema: {
-    querystring: {
-      type: 'object',
-      properties: {
-        format: {
-          type: 'string',
-          description: 'jpeg | jpg | png | webp',
-          nullable: true,
-        },
-        'resize[fit]': {
-          type: 'string',
-          description: 'cover | inside',
-          nullable: true,
-        },
-        'resize[height]': {
-          type: 'number',
-          description: '',
-          nullable: true,
-        },
-        'resize[width]': {
-          type: 'number',
-          description: '',
-          nullable: true,
-        },
-      },
-    },
-  },
+  url: '/:fqdn/:options/*',
 };

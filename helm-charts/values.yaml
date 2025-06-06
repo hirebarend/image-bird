@@ -1,6 +1,0 @@
-AWS_ACCESS_KEY_ID: "" # Replace with your AWS access key ID
-AWS_REGION: "us-east-1" # Replace with your AWS region
-AWS_SECRET_ACCESS_KEY: "" # Replace with your AWS secret access key
-AWS_S3_BUCKET: "" # Replace with your AWS S3 bucket
-HOST: "imagebird.co" # Replace with your host
-USERNAME: "hirebarend" # Replace with your GitHub username
