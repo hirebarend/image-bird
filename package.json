@@ -16,7 +16,7 @@
     "@types/node": "^24.13.5",
     "@types/qs": "^6.15.1",
     "jest": "^30.5.1",
-    "prettier": "^3.9.7",
+    "prettier": "^3.9.8",
     "typescript": "^7.0.2"
   },
   "dependencies": {
